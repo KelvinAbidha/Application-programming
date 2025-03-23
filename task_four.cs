@@ -1,5 +1,4 @@
 using System;
-
 class Program
 {
     // Overloaded Area methods for different shapes
@@ -8,7 +7,7 @@ class Program
         return baseLength * height * 0.5;
     }
 
-    static double Area(double length, double width, bool isRectangle) // Rectangle
+    static double Area(double length, double width, bool isRectangle) // In overloading ran into an issue params of triangle and rec where the same so introduced a bool for distinction
     {
         return length * width;
     }
