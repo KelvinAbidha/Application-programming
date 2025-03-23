@@ -57,13 +57,14 @@ class Program
                     Console.WriteLine($"The area of the Rectangle is: {rectArea}");
                     break;
 
-                case "3": // Circle
-                    validChoice = true;
-                    Console.WriteLine("Enter radius of the circle:");
-                    double radius = Convert.ToDouble(Console.ReadLine());
-
-                    double circleArea = Area(radius); // Call overloaded method
-                    break;
+                case "3":
+                  validChoice = true;
+                  Console.WriteLine("Enter radius of the circle:");
+                  double radius = Convert.ToDouble(Console.ReadLine());
+                    
+                  double circleArea = Area(radius);
+                  Console.WriteLine($"The area of the Circle is: {circleArea}"); // Use the value
+                 break;
 
                 default:
                     attempts++;
