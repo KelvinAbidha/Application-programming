@@ -1,64 +1,79 @@
 using System;
-    class Program
+
+class Program
 {
-   static void Main()
+    // Overloaded Area methods for different shapes
+    static double Area(double baseLength, double height) // Triangle
     {
-        const int maxattempts = 3; //Sets max attempts to 3 , a constant
-        int attempts = 0;  // Initial attempts set to 0
+        return baseLength * height * 0.5;
+    }
+
+    static double Area(double length, double width, bool isRectangle) // Rectangle
+    {
+        return length * width;
+    }
+
+    static double Area(double radius) // Circle
+    {
+        return Math.PI * radius * radius;
+    }
+
+    static void Main()
+    {
+        const int maxAttempts = 3;
+        int attempts = 0;
         bool validChoice = false;
 
-        while (attempts < maxattempts && !validChoice)// && this is an 'and' operator in C# 
+        while (attempts < maxAttempts && !validChoice)
         {
-            Console.WriteLine("Choose shape u want to get area of :");
-            Console.WriteLine("1.Triangle");
+            Console.WriteLine("Choose shape to calculate area:");
+            Console.WriteLine("1. Triangle");
             Console.WriteLine("2. Rectangle");
-            Console.WriteLine("3.Circle ");
-            string choice = Console.ReadLine(); // now this is something new ,so whatever input in writeline is converted to a string named choice which we will be used in switch method cause of diff inputs
+            Console.WriteLine("3. Circle");
+            string choice = Console.ReadLine();
 
-            switch (choice) // For cases remember to add 'break' run into sum issues by ommiting it ,executes a code block from a list of case conditions for which the expression validates as true
+            switch (choice)
             {
-                case "1":
+                case "1": // Triangle
                     validChoice = true;
                     Console.WriteLine("Enter base of the triangle:");
-                    double tribase = Convert.ToDouble(Console.ReadLine());
+                    double triBase = Convert.ToDouble(Console.ReadLine());
 
                     Console.WriteLine("Enter height of the triangle:");
-                    double triheight = Convert.ToDouble(Console.ReadLine());
+                    double triHeight = Convert.ToDouble(Console.ReadLine());
 
-                    double areatri = tribase * triheight * 0.5;
-                    Console.WriteLine("The area of the Trianagle is :" + areatri);
+                    double triArea = Area(triBase, triHeight); // Call overloaded method
+                    Console.WriteLine($"The area of the Triangle is: {triArea}");
                     break;
 
-                case "2":
+                case "2": // Rectangle
                     validChoice = true;
-                    Console.WriteLine("Enter lenghth of the rectangle: ");
+                    Console.WriteLine("Enter length of the rectangle:");
                     double rectLength = Convert.ToDouble(Console.ReadLine());
 
-                    Console.WriteLine("Enter width of the rectangle: ");
+                    Console.WriteLine("Enter width of the rectangle:");
                     double rectWidth = Convert.ToDouble(Console.ReadLine());
 
-                    double areaRect = rectLength * rectWidth;
-                    Console.WriteLine("Area of the Rectangle is : " + areaRect);
+                    double rectArea = Area(rectLength, rectWidth, true); // Call overloaded method
+                    Console.WriteLine($"The area of the Rectangle is: {rectArea}");
                     break;
 
-                case "3":
+                case "3": // Circle
                     validChoice = true;
-                    Console.WriteLine("Enter radius of the circle: ");
-                    double radiCircle = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Enter radius of the circle:");
+                    double radius = Convert.ToDouble(Console.ReadLine());
 
-                    double areaCircle = Math.PI * radiCircle * radiCircle;
-                    Console.WriteLine("Area of the CIrcle is : " + areaCircle);
+                    double circleArea = Area(radius); // Call overloaded method
                     break;
 
-                default: // incase of errors to show number of attempts remaining to input correct value
+                default:
                     attempts++;
-                    Console.WriteLine("Invalid input." + (maxattempts - attempts) + " Attemps remaining ");
-                    if (maxattempts == attempts)
+                    Console.WriteLine($"Invalid input. {maxAttempts - attempts} attempts remaining.");
+                    if (attempts == maxAttempts)
                     {
-                        Console.WriteLine("NO attempts remaining , Existing the program");
+                        Console.WriteLine("No attempts remaining. Exiting the program.");
                     }
                     break;
-
             }
         }
     }
