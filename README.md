@@ -7,3 +7,4 @@ Group 3
 5. John Nyongesa – SCT212-0710/2022
 6. Philip Simiyu – SCT212-0067/2023
 7. Nickson Murithi - SCT212-0707/2022
+8. Emmanuel Mwangangi - SCT212-0331/2023
