@@ -37,7 +37,7 @@ class LuckyGame
             }
         }
 
-        Console.WriteLine($"\nFinal Score: {totalScore}");
+        Console.WriteLine($"\nFinal : {totalScore}");
         Console.WriteLine($"(The secret number was: {secretNumber})"); // Revealing the secret number at the end
 
         if (totalScore > 0)
