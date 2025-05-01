@@ -82,3 +82,83 @@ public class WholesaleBusiness : Business
 {
     private const double WholesaleDiscount = 0.1;
 
+    public WholesaleBusiness() : base() { }
+
+    public WholesaleBusiness(double buyingPrice, double transportCost, double sellingPrice)
+        : base(buyingPrice, transportCost, sellingPrice) { }
+
+    public override void CalculateProfitOrLoss()
+    {
+        double discountedSellingPrice = sellingPrice * (1 - WholesaleDiscount);
+        double totalCost = buyingPrice + transportCost;
+        double result = discountedSellingPrice - totalCost;
+
+        if (result > 0)
+        {
+            Console.WriteLine($"[Wholesale] A PROFIT of ${result:F2} was made after {WholesaleDiscount * 100}% discount.");
+        }
+        else if (result < 0)
+        {
+            Console.WriteLine($"[Wholesale] A LOSS of ${Math.Abs(result):F2} was incurred after {WholesaleDiscount * 100}% discount.");
+        }
+        else
+        {
+            Console.WriteLine("[Wholesale] You broke even after discount.");
+        }
+    }
+}
+
+// Main program
+class Program
+{
+    static void Main(string[] args)
+    {
+        try
+        {
+            // Test Retail Business
+            Console.WriteLine("Enter details for Retail Business:");
+            Console.Write("Enter buying price: ");
+            double buy = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Enter transport cost: ");
+            double transport = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Enter selling price: ");
+            double sell = Convert.ToDouble(Console.ReadLine());
+
+            Business retail = new RetailBusiness(buy, transport, sell);
+            retail.CalculateProfitOrLoss();
+
+            // Test Wholesale Business
+            Console.WriteLine("\nEnter details for Wholesale Business:");
+            Console.Write("Enter buying price: ");
+            buy = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Enter transport cost: ");
+            transport = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Enter selling price: ");
+            sell = Convert.ToDouble(Console.ReadLine());
+
+            Business wholesale = new WholesaleBusiness(buy, transport, sell);
+            wholesale.CalculateProfitOrLoss();
+
+            // Test default constructor
+            Console.WriteLine("\nTesting default constructor with Retail Business:");
+            Business defaultRetail = new RetailBusiness();
+            defaultRetail.CalculateProfitOrLoss();
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Error: Please enter valid numeric values.");
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Unexpected error: {ex.Message}");
+        }
+    }
+}
