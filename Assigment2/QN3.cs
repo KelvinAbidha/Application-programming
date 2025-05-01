@@ -86,20 +86,23 @@ class Program
 {
     static void Main()
     {
-        // Test Savings Account
-        var sa = new SavingsAccount("S01", "Alice", 1000);
+        SavingsAccount sa = new SavingsAccount("S01", "Alice", 1000);
+        Console.WriteLine($"Account Holder: {sa.Name} | Account No: {sa.AccountNo}");
+
+        sa.CheckBalance();
         sa.Deposit(100);
         sa.Withdraw(200);
-        sa.AddInterest(0.05m); // 5% interest
+        sa.AddInterest(0.05m); // 5% annual interest
         sa.CheckBalance();
 
-        Console.WriteLine();
+        Console.WriteLine("");
+        CurrentAccount ca = new CurrentAccount("C01", "Bob", 500, 300);
+        Console.WriteLine($"Account Holder: {ca.Name} | Account No: {ca.AccountNo}");
 
-        // Test Current Account
-        var ca = new CurrentAccount("C01", "Bob", 500, 300);
-        ca.Withdraw(600); // within overdraft
+        ca.CheckBalance();
+        ca.Withdraw(600); // allowed with overdraft
         ca.CheckBalance();
         ca.Withdraw(300); // exceeds overdraft
+        ca.CheckBalance();
     }
 }
-
