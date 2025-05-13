@@ -1,9 +1,3 @@
-//'using system collections generic' :It provides a generic implementation of standard data structure like linked lists, stacks, queues, and dictionaries
-// '/t '- Intoduction to concept of using tabs , this is in outputing the information
-// Personally if u check under the while loop Console.Writeline i introduced a function to stop inputing Details , since its a while loop it continous , on entery of last details for a person type "no"
-//Type 'no ' when done with the salespersons data and uwant the output
-// Also another error i often made was in the for loops , always specify the data type e.g  for (int s = 0; s < salesmen.Count; s++),you write  for (s = 0; s < salesmen.Count; s++) u will get errors
-// Also be aware of the difference when using Console.Write() and Console.WriteLine()
 using System;
 using System.Collections.Generic;
 
